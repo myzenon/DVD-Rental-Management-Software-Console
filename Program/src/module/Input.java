@@ -3,11 +3,6 @@
  * > This classes for get data value from keyboard.
  * (Created by Zenon 'SI)
  *
- * Int(Message for Ask, Message when input others type)
- * Int(Message for Ask, Message when input others type, Length Limit, Message when over length limited)
- * Double(Message for Ask, Message when input others type)
- * String(Message for Ask, Message when no input)
- *
  ***************************************/
 
 package module;
