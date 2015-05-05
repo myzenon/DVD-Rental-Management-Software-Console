@@ -137,10 +137,12 @@ public class Store {
                 int date[] = input.getDate();
                 int compareDate = DateChecker.compareDate(dvd.getRentDay(), dvd.getRentMonth(), dvd.getRentYear(), date[0], date[1], date[2]);
                 if(compareDate >= 0) {
-                    if((dvd.getAge() == 'o') && (compareDate > oldDaysRent))
-                        System.out.println("System : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " must pay " + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht");
-                    else if (compareDate > newDaysRent)
-                        System.out.println("System : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " must pay " + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht");
+                    if((compareDate > oldDaysRent) || (compareDate > newDaysRent)){
+                        if((dvd.getAge() == 'o') && (compareDate > oldDaysRent))
+                            System.out.println("System : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " must pay " + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht");
+                        if((dvd.getAge() == 'n') && (compareDate > newDaysRent))
+                            System.out.println("System : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " must pay " + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht");
+                    }
                     else if (brokenPrice != 0)
                         System.out.println("System : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " must pay " + brokenPrice +  " baht");
                     System.out.println("Complete : Returned " + dvd.getName() + " from " + searchMemberByID(dvd.getRentUser()).getFirstName());
