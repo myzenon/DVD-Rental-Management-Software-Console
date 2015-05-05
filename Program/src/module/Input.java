@@ -135,6 +135,26 @@ public class Input {
         return new int[]{day,month,year};
     }
 
+
+    public double getPrice(String getMSG, String errorMSG, String errorMSGMinus) {
+        double price = getDouble(getMSG, errorMSG);
+        while(price < 0) {
+            System.out.println(errorMSGMinus);
+            price = getDouble(getMSG, errorMSG);
+        }
+        return price;
+    }
+
+
+    public int getAmount(String getMSG, String errorMSG, String errorMSGMinus) {
+        int amount = getInt(getMSG,errorMSG);
+        while(amount < 0) {
+            System.out.println(errorMSGMinus);
+            amount =  getInt(getMSG,errorMSG);
+        }
+        return amount;
+    }
+
     public void pressEnterKey() {
         System.out.println("Press enter key to continue ...");
         scanner.nextLine();

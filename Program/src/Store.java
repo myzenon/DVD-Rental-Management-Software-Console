@@ -163,7 +163,7 @@ public class Store {
     void addDVD() {
         System.out.println("< ============ Add DVD ============ >");
         String name = input.getString("Name : ", "Error : Please input dvd name.");
-        double price = input.getDouble("Price : ", "Error : Please input price only double.");
+        double price = input.getPrice("Price : ", "Error : Please input price only double." , "Error : Price can't minus.");
         char age = input.getChar("Age [o = old, n = new] : ", "Error : Please input only 'o' and 'n'", new char[]{'o','n'});
         dvdList.add(new DVD(idDVDs, name, price, age));
         idDVDs++;
@@ -370,10 +370,22 @@ public class Store {
     void statement() {
         System.out.println("< ============ Statement for each day ============ >");
         int date[] = input.getDate();
+        ArrayList<String> allLog = new ArrayList<String>();
         for (DVD dvd : dvdList) {
-            for(String log : dvd.findLog(date[0],date[1],date[2])) {
-                System.out.println(log + " -> Took -> " + "[" + dvd.getId() + "] " + dvd.getName());
+            ArrayList<String> log = dvd.findLog(date[0],date[1],date[2]);
+            if(!log.isEmpty()) {
+                for(String logString : log) {
+                    allLog.add(logString + " -> Took -> " + "[" + dvd.getId() + "] " + dvd.getName());
+                }
             }
+        }
+        if(!allLog.isEmpty()) {
+            for(String log : allLog) {
+                System.out.println(log);
+            }
+        }
+        else {
+            System.out.println("No Statement for this day.");
         }
         input.pressEnterKey();
         showMenu();
@@ -385,12 +397,12 @@ public class Store {
 
     void settings() {
         System.out.println("-------------- Settings Program --------------");
-        this.normalMemberPrice = input.getDouble("Default Normal Member Fee : ", "Error : Please input only number");
-        this.vipMemberPrice = input.getDouble("Default VIP Member Fee : ", "Error : Please input only number");
-        this.oldDaysRent = input.getInt("Default Old Movie Rent Days : ", "Error : Please input only number");
-        this.newDaysRent = input.getInt("Default New Movie Rent Days : ", "Error : Please input only number");
-        this.priceRate = input.getDouble("Default Rent Price Rate : ", "Error : Please input only number");
-        this.priceOver = input.getDouble("Default Price that over each day from rent days : ", "Error : Please input only number");
+        this.normalMemberPrice = input.getPrice("Default Normal Member Fee : ", "Error : Please input only number", "Error : Price can't minus.");
+        this.vipMemberPrice = input.getPrice("Default VIP Member Fee : ", "Error : Please input only number", "Error : Price can't minus.");
+        this.oldDaysRent = input.getAmount("Default Old Movie Rent Days : ", "Error : Please input only number", "Error : Amount Days can't minus.");
+        this.newDaysRent = input.getAmount("Default New Movie Rent Days : ", "Error : Please input only number", "Error : Amount Days can't minus.");
+        this.priceRate = input.getPrice("Default Rent Price Rate : ", "Error : Please input only number", "Error : Price can't minus.");
+        this.priceOver = input.getPrice("Default Price that over each day from rent days : ", "Error : Please input only number", "Error : Price can't minus.");
         this.name = input.getString("DVD Shop Name : ", "Error : Please input shop name");
     }
 
@@ -418,10 +430,12 @@ public class Store {
 
 
     void deleteDVDbyID(int dvdID) {
-        dvdList.remove(dvdID);
+        dvdList.set(dvdID, null);
     }
 
-    void deleteMemberbyID(int memberID) {memberList.remove(memberID);}
+    void deleteMemberbyID(int memberID) {
+        memberList.set(memberID, null);
+    }
 
     // ----------------------------------- DATABASE INTERFACE ----------------------------------- //
 }
