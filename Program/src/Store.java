@@ -21,7 +21,7 @@ public class Store {
         this.idMembers = 0;
         input = new Input();
         settings();
-        debug();
+        //debug();
         showMenu();
     }
 
@@ -132,9 +132,9 @@ public class Store {
                     int newDays = (searchMemberByID(dvd.getRentUser()) instanceof NormalMember ? newDaysRent : newDaysRent + vipDaysRent);
                     if((compareDate > oldDays) || (compareDate > newDays)){
                         if((dvd.getAge() == 'o') && (compareDate > oldDays))
-                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht.");
+                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - oldDays) * priceOver) + brokenPrice) + " baht.");
                         if((dvd.getAge() == 'n') && (compareDate > newDays))
-                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht.");
+                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - newDays) * priceOver) + brokenPrice) + " baht.");
                     }
                     else if (brokenPrice != 0)
                         System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included " + brokenPrice +  " baht.");
