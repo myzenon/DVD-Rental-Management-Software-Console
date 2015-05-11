@@ -281,7 +281,7 @@ public class Store {
             System.out.println("PhoneNumber : " + member.getPhoneNumber());
             System.out.println("Address : " + member.getAddress());
             System.out.println("Date of birth : " + member.getBirthDay());
-            System.out.println("(Log : ");
+            System.out.println("Log : ");
             for(String log : member.getLog())
                 System.out.println(log);
         }
@@ -326,7 +326,7 @@ public class Store {
                     member.setAddress(address);
                     break;
                 case 6:
-                    System.out.println("Date of birth :> ");
+                    System.out.println("Date of birth : > ");
                     int birthDay[] = input.getDate();
                     member.setBirthDay(birthDay);
                     break;
@@ -348,11 +348,11 @@ public class Store {
         if(member != null) {
             if(input.getChar("Are you sure ? [y = Yes, n = No] : ", "Error : Please input only 'y' or 'n'.", new char[]{'y','n'}) == 'y') {
                 deleteMemberbyID(memberID);
-                System.out.println(" Member [" + member.getId() + "] " + member.getFirstName() + " Completely delete.");
+                System.out.println("Member [" + member.getId() + "] " + member.getFirstName() + " Completely delete.");
             }
         }
         else
-            System.out.println(" Error : This member cannot be found.");
+            System.out.println("Error : This member cannot be found.");
         input.pressEnterKey();
         showMemberMenu();
     }
@@ -464,7 +464,7 @@ public class Store {
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"The Prestige" ,100,'o'));
         idDVDs++;
-        dvdList.add(new DVD(idDVDs,"Shutter Island " ,199,'o'));
+        dvdList.add(new DVD(idDVDs,"Shutter Island" ,199,'o'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"50/50" ,189,'o'));
         idDVDs++;
@@ -478,7 +478,7 @@ public class Store {
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"Shrek" ,250,'o'));
         idDVDs++;
-        dvdList.add(new DVD(idDVDs,"up" ,189,'o'));
+        dvdList.add(new DVD(idDVDs,"UP" ,189,'o'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"How to Train Your Dragon" ,100,'o'));
         idDVDs++;
@@ -510,17 +510,17 @@ public class Store {
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"The Tourist " ,189,'n'));
         idDVDs++;
-        dvdList.add(new DVD(idDVDs,"Gia " ,289,'n'));
+        dvdList.add(new DVD(idDVDs,"Gia" ,289,'n'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"Sin City " ,199,'n'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"Knocked Up " ,189,'n'));
         idDVDs++;
-        dvdList.add(new DVD(idDVDs,"Easy A  " ,250,'n'));
+        dvdList.add(new DVD(idDVDs,"Easy A" ,250,'n'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"Going the Distance " ,199,'n'));
         idDVDs++;
-        dvdList.add(new DVD(idDVDs,"Scream " ,189,'n'));
+        dvdList.add(new DVD(idDVDs,"Scream" ,189,'n'));
         idDVDs++;
         dvdList.add(new DVD(idDVDs,"From Hell " ,199,'n'));
         idDVDs++;
