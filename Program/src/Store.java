@@ -10,8 +10,8 @@ public class Store {
     int idMembers;
     Input input;
 
-    double normalMemberPrice ,vipMemberPrice = 45, priceRate = 20, priceOver = 10;
-    int oldDaysRent = 3, newDaysRent = 1;
+    double normalMemberPrice ,vipMemberPrice, priceRate, priceOver;
+    int oldDaysRent, newDaysRent;
     String name;
 
     Store(){
@@ -82,7 +82,7 @@ public class Store {
             case 4 : deleteMember(); break;
             case 5 : showMenu(); break;
             default:
-                System.out.println("Error :Please press only number 1-5.");
+                System.out.println("Error : Please press only number 1-5.");
                 showDVDMenu();
         }
     }
@@ -130,12 +130,12 @@ public class Store {
                 if(compareDate >= 0) {
                     if((compareDate > oldDaysRent) || (compareDate > newDaysRent)){
                         if((dvd.getAge() == 'o') && (compareDate > oldDaysRent))
-                            System.out.println("Data DVD that was rented : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " It's included :" + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht.");
+                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht.");
                         if((dvd.getAge() == 'n') && (compareDate > newDaysRent))
-                            System.out.println("Data DVD that was rented : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " It's included :" + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht.");
+                            System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht.");
                     }
                     else if (brokenPrice != 0)
-                        System.out.println("Data DVD that was rented : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " It's included " + brokenPrice +  " baht.");
+                        System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included " + brokenPrice +  " baht.");
                     System.out.println(dvd.getName() + " was completely return by " + searchMemberByID(dvd.getRentUser()).getFirstName() + ".");
                     dvd.returnDVD();
                 }
@@ -262,7 +262,7 @@ public class Store {
         idMembers++;
         System.out.println(member.getIDCard(this.name));
         System.out.println("Completely ! Add Member : " + firstname + " With ID : " + (idMembers-1) + ".");
-        System.out.println("Members names : " + firstname + " It's included :" + (type == 'v' ? vipMemberPrice : normalMemberPrice + " baht."));
+        System.out.println("Members name : " + firstname + " It's included : " + (type == 'v' ? vipMemberPrice : normalMemberPrice + " baht."));
         input.pressEnterKey();
         showMemberMenu();
     }
