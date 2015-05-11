@@ -6,8 +6,6 @@
  ***************************************/
 
 package module;
-
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -32,28 +30,6 @@ public class Input {
         }
         return data;
     }
-
-//    public int getInt(String getMSG, String errorMSG, int lengthLimit, String lengthMSG) {
-//        int data;
-//        System.out.print(getMSG);
-//        try {
-//            data = scanner.nextInt();
-//            scanner.nextLine();
-//            if(((int)(Math.log10(data) + 1)) > lengthLimit) {
-//                throw new Exception();
-//            }
-//        }
-//        catch (InputMismatchException e) {
-//            scanner.nextLine();
-//            System.out.println(errorMSG);
-//            data = getInt(getMSG, errorMSG, lengthLimit, lengthMSG);
-//        }
-//        catch (Exception e) {
-//            System.out.println(lengthMSG);
-//            data = getInt(getMSG, errorMSG, lengthLimit, lengthMSG);
-//        }
-//        return data;
-//    }
 
     public double getDouble(String getMSG, String errorMSG) {
         double data;

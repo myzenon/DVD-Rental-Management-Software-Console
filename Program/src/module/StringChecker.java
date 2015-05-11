@@ -1,3 +1,9 @@
+/***************************************
+ *
+ * > This classes for check many type of String data
+ * (Created by Zenon 'SI)
+ *
+ ***************************************/
 package module;
 
 public class StringChecker {
@@ -19,11 +25,4 @@ public class StringChecker {
         return true;
     }
 
-//    public static boolean checkHouseNo(String text) {
-//        for(int i = 0; i < text.length() ;i++) {
-//            if(((text.charAt(i) < '0') || (text.charAt(i) > '9')) && (text.charAt(i) != '/'))
-//                return false;
-//        }
-//        return true;
-//    }
 }

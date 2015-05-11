@@ -100,8 +100,8 @@ public class Store {
                     dvd.rentDVD(member, date[0], date[1], date[2]);
                     dvd.addLog(date[0] + "-" + date[1] + "-" + date[2], member);
                     member.addLog(date[0] + "-" + date[1] + "-" + date[2], dvd);
-                    System.out.println("Members names : " + member.getFirstName() + " It's included :" + priceRate + " baht.");
-                    System.out.println("Members names : " + member.getFirstName() + " Rent : " + dvd.getName() + ".");
+                    System.out.println("Members names : " + member.getFirstName() + " | It's included : " + priceRate + " baht.");
+                    System.out.println("Members names : " + member.getFirstName() + " | Rent : " + dvd.getName() + ".");
                 }
                 else
                     System.out.println("Error : This member cannot be found.");
@@ -157,7 +157,7 @@ public class Store {
         System.out.println("< ============ Add DVD ============ >");
         String name = input.getString("Name : ", "Error : Please input DVD name.");
         double price = input.getPrice("Price : ", "Error : Please press only numbers." , "Error : Price cannot be negative numbers.");
-        char age = input.getChar("Age [o = old, n = new] : ", "Error : Please input only 'o' and 'n'.", new char[]{'o','n'});
+        char age = input.getChar("Period [o = old, n = new] : ", "Error : Please input only 'o' or 'n'.", new char[]{'o','n'});
         dvdList.add(new DVD(idDVDs, name, price, age));
         idDVDs++;
         System.out.println("DVD name : " + name + " was completely with id " + (idDVDs-1) + ".");
@@ -175,7 +175,7 @@ public class Store {
             System.out.println("Price : " + dvd.getPrice());
             System.out.println("Period : " + (dvd.getAge() == 'o' ? "Old" : "New"));
             System.out.println("Status : " + (dvd.getRentUser() == -1 ? "Available" : "Rent by " + searchMemberByID(dvd.getRentUser()).getFirstName() + " At " + dvd.getRentDay() + "/" + dvd.getRentMonth() + "/" + dvd.getRentYear()));
-            System.out.println("(Log : ");
+            System.out.println("Log : ");
             for(String log : dvd.getLog())
                 System.out.println(log);
         }
@@ -205,7 +205,7 @@ public class Store {
                     dvd.setPrice(price);
                     break;
                 case 3:
-                    char age = input.getChar("Period [o = old, n = new] : ", "Error : Please input only 'o' and 'n'.", new char[]{'o','n'});
+                    char age = input.getChar("Period [o = old, n = new] : ", "Error : Please input only 'o' or 'n'.", new char[]{'o','n'});
                     dvd.setAge(age);
                     break;
                 default:
@@ -316,11 +316,11 @@ public class Store {
                     member.setGender(gender);
                     break;
                 case 4:
-                    String phoneNumber = input.getString("Phone Number : ", "Error : Please input phone number, you can only use numbers.", "number", "Error : please input only numbers.");
+                    String phoneNumber = input.getString("Phone Number : ", "Error : Please input phone number, you can only use numbers.", "number", "Error : Please input only numbers.");
                     member.setPhoneNumber(phoneNumber);
                     break;
                 case 5:
-                    String address = input.getString("Address : ", "Error : Please input address, you can only use alphabet..");
+                    String address = input.getString("Address : ", "Error : Please input address.");
                     member.setAddress(address);
                     break;
                 case 6:

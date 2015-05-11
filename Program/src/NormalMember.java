@@ -1,6 +1,5 @@
 import module.DateChecker;
 import module.StringChecker;
-
 import java.util.ArrayList;
 
 public class NormalMember implements IMember {
