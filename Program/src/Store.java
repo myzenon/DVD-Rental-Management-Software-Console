@@ -11,7 +11,7 @@ public class Store {
     Input input;
 
     double normalMemberPrice ,vipMemberPrice, priceRate, priceOver;
-    int oldDaysRent, newDaysRent;
+    int oldDaysRent, newDaysRent, vipDaysRent;
     String name;
 
     Store(){
@@ -128,10 +128,12 @@ public class Store {
                 int date[] = input.getDate();
                 int compareDate = DateChecker.compareDate(dvd.getRentDay(), dvd.getRentMonth(), dvd.getRentYear(), date[0], date[1], date[2]);
                 if(compareDate >= 0) {
-                    if((compareDate > oldDaysRent) || (compareDate > newDaysRent)){
-                        if((dvd.getAge() == 'o') && (compareDate > oldDaysRent))
+                    int oldDays = (searchMemberByID(dvd.getRentUser()) instanceof NormalMember ? oldDaysRent : oldDaysRent + vipDaysRent);
+                    int newDays = (searchMemberByID(dvd.getRentUser()) instanceof NormalMember ? newDaysRent : newDaysRent + vipDaysRent);
+                    if((compareDate > oldDays) || (compareDate > newDays)){
+                        if((dvd.getAge() == 'o') && (compareDate > oldDays))
                             System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - oldDaysRent) * priceOver) + brokenPrice) + " baht.");
-                        if((dvd.getAge() == 'n') && (compareDate > newDaysRent))
+                        if((dvd.getAge() == 'n') && (compareDate > newDays))
                             System.out.println("Member Name : " + searchMemberByID(dvd.getRentUser()).getFirstName() + " | It's included : " + (((compareDate - newDaysRent) * priceOver) + brokenPrice) + " baht.");
                     }
                     else if (brokenPrice != 0)
@@ -394,6 +396,7 @@ public class Store {
         this.vipMemberPrice = input.getPrice("Default VIP Member Fee : ", "Error : Please input only numbers.", "Error : Price can't be negative numbers.");
         this.oldDaysRent = input.getAmount("Default Old Movie Rent Days : ", "Error : Please input only numbers.", "Error : Amount of date can't be negative numbers.");
         this.newDaysRent = input.getAmount("Default New Movie Rent Days : ", "Error : Please input only numbers.", "Error : Amount of date can't be negative numbers.");
+        this.vipDaysRent = input.getAmount("Default VIP Member Extra Days : ", "Error : Please input only numbers.", "Error : Amount of date can't be negative numbers.");
         this.priceRate = input.getPrice("Default Rent Price Rate : ", "Error : Please input only numbers.", "Error : Price can't be negative numbers.");
         this.priceOver = input.getPrice("Default Price that over each day from rent days : ", "Error : Please input only numbers.", "Error : Price can't be negative numbers.");
         this.name = input.getString("DVD Shop Name : ", "Error : Please input shop name.");
