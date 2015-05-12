@@ -21,7 +21,7 @@ public class Store {
         this.idMembers = 0;
         input = new Input();
         settings();
-        //debug();
+        debug();
         showMenu();
     }
 
@@ -610,7 +610,6 @@ public class Store {
 
 
         rentDVD_parm(9, 1, new int[]{11, 5, 2015});
-        returnDVD_parm(9);
     }
 
     void rentDVD_parm(int dvdID, int memberID, int date[]) {
