@@ -21,7 +21,7 @@ public class Store {
         this.idMembers = 0;
         input = new Input();
         settings();
-        debug();
+        //debug();
         showMenu();
     }
 
@@ -578,8 +578,6 @@ public class Store {
         memberList.add(new NormalMember(idMembers,"Sandra","Bullock",'f',"0943446633","PO Box 70554 Washington, DC 20024",new int[]{8,2,1900}));
         idMembers++;
         memberList.add(new NormalMember(idMembers,"Sarah","Bernhardt",'f',"0936637363","520 8th Ave. New York, NY 10012",new int[]{22,2,1999}));
-        idMembers++;
-        memberList.add(new NormalMember(idMembers,"Leonard","Bernstein",'f',"0862565532","914 Westwood Blvd PMB 140 Los Angeles, CA 90024",new int[]{23,7,1789}));
         idMembers++;
 
         rentDVD_parm(0, 0, new int[]{9, 5, 2015});
