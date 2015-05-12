@@ -264,7 +264,7 @@ public class Store {
         idMembers++;
         System.out.println(member.getIDCard(this.name));
         System.out.println("Completely ! Add Member : " + firstname + " With ID : " + (idMembers-1) + ".");
-        System.out.println("Members name : " + firstname + " It's included : " + (type == 'v' ? vipMemberPrice : normalMemberPrice + " baht."));
+        System.out.println("Members name : " + firstname + " It's included : " + (type == 'v' ? vipMemberPrice : normalMemberPrice) + " baht.");
         input.pressEnterKey();
         showMemberMenu();
     }
